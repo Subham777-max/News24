@@ -1,0 +1,1 @@
+export const topics=["Technology", "Sports", "Business", "Entertainment", "Health"]
