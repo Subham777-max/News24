@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import fetchTopNews from '../../Service/fetchTopNews.js';
 import { useState } from 'react';
+import Loader from '../Loader/Loader.jsx';
 function NewsMain({ topic }){
     const [page,setPage]=useState(1)
     const { data, isLoading, error } = useQuery({
@@ -9,7 +10,8 @@ function NewsMain({ topic }){
         cacheTime: 1000*2*60,
         staleTime: 1000*2*60,
     });
-    if (isLoading) return <p>Loading news...</p>;
+
+    if (isLoading) return <Loader />
     if (error) return <p>Error fetching news</p>;
     return(
         <>

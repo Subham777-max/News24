@@ -2,6 +2,7 @@ import { useState } from "react";
 import { topics } from "./topics";
 import NewsMain from "../NewsMain/NewsMain";
 import RightAside from "../NewsAside/RightAside";
+import LeftAside from "../NewsAside/LeftAside";
 
 function NewsBody(){
     const [topic,setTopic]=useState(topics[0]);
@@ -27,8 +28,8 @@ function NewsBody(){
                 </ul>
                 <section className="flex mt-5 h-[64vh] gap-4">
                     
-                    <aside className="hidden bg-gray-100 lg:block lg:w-1/4">
-                       
+                    <aside className="hidden lg:block lg:w-1/4">
+                       <LeftAside topic={topic} />
                     </aside>
 
                     
@@ -38,7 +39,7 @@ function NewsBody(){
 
                     
                     <aside className="hidden lg:block lg:w-1/4">
-                        <RightAside />
+                        <RightAside topic={topic} />
                     </aside>
                 </section>
 
