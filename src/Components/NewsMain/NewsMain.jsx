@@ -1,15 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 import fetchTopNews from '../../Service/fetchTopNews.js';
+import { useState } from 'react';
 function NewsMain({ topic }){
+    const [page,setPage]=useState(1)
     const { data, isLoading, error } = useQuery({
-        queryKey: ["topNews", topic], 
-        queryFn: () => fetchTopNews(topic, 10, 1),
+        queryKey: ["topNews", topic,page], 
+        queryFn: () => fetchTopNews(topic, 10, page),
         cacheTime: 1000*2*60,
         staleTime: 1000*2*60,
     });
     if (isLoading) return <p>Loading news...</p>;
     if (error) return <p>Error fetching news</p>;
-    console.log(data);
     return(
         <>
             {data.articles.map((article)=>{
@@ -22,6 +23,7 @@ function NewsMain({ topic }){
                             src={article.image}
                             alt={article.title}
                             className="object-cover w-full h-64 transition-all ease duration-[0.5s] hover:scale-[1.1]"
+                            loading='lazy'
                         />
                         <div className="p-4">
                             <h2 className="mb-2 text-xl font-semibold md:text-2xl text-primary">
@@ -33,6 +35,14 @@ function NewsMain({ topic }){
 
                 )
             })}
+            <div className="flex justify-center gap-6 mt-6 mb-3">
+                <button onClick={()=>setPage(page-1)} disabled={page===1} className={`py-2 transition border px-7 text-accent border-accent  ${page===1?"opacity-50":"hover:bg-accent hover:text-white"}`}>
+                    Prev
+                </button>
+                <button onClick={()=>setPage(page+1)} className="py-2 text-white transition px-7 bg-accent hover:bg-accent/80">
+                    Next
+                </button>
+            </div>
         </>
     )
 }

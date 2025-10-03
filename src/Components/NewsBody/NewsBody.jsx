@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { topics } from "./topics";
 import NewsMain from "../NewsMain/NewsMain";
+import RightAside from "../NewsAside/RightAside";
 
 function NewsBody(){
     const [topic,setTopic]=useState(topics[0]);
@@ -26,18 +27,18 @@ function NewsBody(){
                 </ul>
                 <section className="flex mt-5 h-[64vh] gap-4">
                     
-                    <aside className="hidden w-1/4 bg-gray-100 sm:block">
-                        
+                    <aside className="hidden bg-gray-100 lg:block lg:w-1/4">
+                       
                     </aside>
 
                     
-                    <main className="flex-1 overflow-y-auto sm:w-2/4 no-scrollbar">
-                       <NewsMain topic={topic} />
+                    <main className="flex-1 overflow-y-auto sm:w-2/3 lg:w-2/4 no-scrollbar">
+                        <NewsMain topic={topic} />
                     </main>
 
                     
-                    <aside className="hidden w-1/4 bg-gray-100 sm:block">
-                        jbffo
+                    <aside className="hidden lg:block lg:w-1/4">
+                        <RightAside />
                     </aside>
                 </section>
 
