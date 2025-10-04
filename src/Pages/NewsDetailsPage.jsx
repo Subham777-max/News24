@@ -1,5 +1,5 @@
 import Navbar from "../Components/Navbar/Navbar";
-import NewsDetails from "../NewsDetails/NewsDetails";
+import NewsDetails from "../Components/NewsDetails/NewsDetails";
 
 function NewsDetailsPage(){
     return(
