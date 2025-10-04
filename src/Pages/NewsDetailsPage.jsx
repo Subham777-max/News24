@@ -1,11 +1,15 @@
+import { lazy, Suspense } from "react";
 import Navbar from "../Components/Navbar/Navbar";
-import NewsDetails from "../Components/NewsDetails/NewsDetails";
+import Loader from "../Components/Loader/Loader";
+const NewsDetails = lazy(() => import("../Components/NewsDetails/NewsDetails"));
 
 function NewsDetailsPage(){
     return(
         <>
-            <Navbar />
-            <NewsDetails />
+            <Suspense fallback={<Loader />}>
+                <Navbar />
+                <NewsDetails />
+            </Suspense>
         </>
     )
 }

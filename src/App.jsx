@@ -1,6 +1,5 @@
-
 import './App.css'
-import NewsBody from './Components/NewsBody/NewsBody'
+import AppErrorBoundary from './Components/ErrorBoundary/ErrorBoundary'
 import Router from './Router/Router'
 
 function App() {
@@ -8,9 +7,11 @@ function App() {
 
   return (
     <>
-      <Router />
+      <AppErrorBoundary>
+        <Router />
+      </AppErrorBoundary>
     </>
   )
 }
 
-export default App
+export default App;

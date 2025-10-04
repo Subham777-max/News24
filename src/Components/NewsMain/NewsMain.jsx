@@ -17,7 +17,7 @@ function NewsMain({ topic }){
     });
 
     if (isLoading) return <Loader />
-    if (error) return <p>Error fetching news</p>;
+    if (error) throw error;
     return(
         <>
             {data.articles.map((article)=>{

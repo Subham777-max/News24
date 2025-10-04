@@ -8,7 +8,7 @@ function BitcoinPrice(){
         staleTime: 1000*2*60,
     });
     if (isLoading) return <p>Loading news...</p>;
-    if (error) return <p>Error fetching news</p>;
+    if (error) throw error;
     return(
         <>{data.bitcoin.usd}$</>
     )

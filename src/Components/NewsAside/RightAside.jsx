@@ -17,7 +17,7 @@ function RightAside({ topic }) {
     });
 
     if (isLoading) return <Loader />
-    if (error) return <p>Error fetching news</p>;
+    if (error) throw error;
     return (
         <div className="flex flex-col w-full h-full gap-4">
             <div className="w-full h-[15rem] bg-accent text-secondary flex flex-col justify-center p-6 gap-2  ">

@@ -16,7 +16,7 @@ function LeftAside({ topic }) {
     });
 
     if (isLoading) return <Loader />
-    if (error) return <p>Error fetching news</p>;
+    if (error) throw error;
     return (
         <div className="flex flex-col w-full h-full gap-4">
             <div className="w-full h-[15rem]   " onClick={()=>handleClick(data.articles[2])}>
