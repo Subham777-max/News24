@@ -2,8 +2,13 @@ import { useQuery } from '@tanstack/react-query'
 import fetchTopNews from '../../Service/fetchTopNews.js';
 import { useState } from 'react';
 import Loader from '../Loader/Loader.jsx';
+import { useNavigate } from 'react-router-dom';
 function NewsMain({ topic }){
     const [page,setPage]=useState(1)
+    const navigate=useNavigate();
+    function handleClick(article){
+        navigate(`/News-Details/${article.id}`, { state: { article } });
+    }
     const { data, isLoading, error } = useQuery({
         queryKey: ["topNews", topic,page], 
         queryFn: () => fetchTopNews(topic, 10, page),
@@ -20,6 +25,7 @@ function NewsMain({ topic }){
                     <div
                         key={article.id}
                         className="w-full mb-6 overflow-x-hidden"
+                        onClick={()=>handleClick(article)}
                         >
                         <img
                             src={article.image}

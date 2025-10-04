@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import BitcoinPrice from "./BitcoinPrice";
 import fetchNews from "../../Service/fetchNews";
 import Loader from "../Loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 function LeftAside({ topic }) {
+    const navigate=useNavigate();
+    function handleClick(article){
+        navigate(`/News-Details/${article.id}`, { state: { article } });
+    }
     const { data, isLoading, error } = useQuery({
         queryKey: ["news", topic], 
         queryFn: () => fetchNews(topic, 3, 1),
@@ -13,17 +17,16 @@ function LeftAside({ topic }) {
 
     if (isLoading) return <Loader />
     if (error) return <p>Error fetching news</p>;
-    console.log(data);
     return (
         <div className="flex flex-col w-full h-full gap-4">
-            <div className="w-full h-[15rem]   ">
+            <div className="w-full h-[15rem]   " onClick={()=>handleClick(data.articles[2])}>
                     <img src={data.articles[2].image} alt="" className="object-cover w-full h-[10rem] transition-all ease duration-[0.5s] hover:scale-[1.1]" />
                     <h1 className="p-2 text-primary">
                         {data.articles[2].title}
                     </h1>
             </div>
-            <div className="w-full h-px bg-gray-400" />
-            <div className="w-full overflow-x-hidden no-scrollbar">
+            <div className="w-full h-px my-2 bg-gray-400" />
+            <div className="w-full overflow-x-hidden no-scrollbar" onClick={()=>handleClick(data.articles[1])}>
                 <img src={data.articles[1].image} alt="" className="object-cover w-full h-[10rem] transition-all ease duration-[0.5s] hover:scale-[1.1]" />
                 <div>
                     <h1 className="p-2 text-xs text-gray-600">

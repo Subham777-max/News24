@@ -4,14 +4,12 @@ import NewsMain from "../NewsMain/NewsMain";
 import RightAside from "../NewsAside/RightAside";
 import LeftAside from "../NewsAside/LeftAside";
 
+
 function NewsBody(){
     const [topic,setTopic]=useState(topics[0]);
     return(
         <>
-           <header className="p-6 sm:p-8">
-                <h1 className="text-4xl font-bold text-primary sm:text-6xl">News<span className="text-accent">24</span></h1>
-           </header>
-           <section className="px-6 mt-2 sm:px-[5.9rem] tracking-wider flex flex-col justify-evenly gap-5 ">
+           <section className="px-6 sm:px-[5.9rem] tracking-wider flex flex-col justify-evenly gap-5 mt-[16.5vh]">
                 <h1 className="text-2xl sm:text-4xl text-primary">Latest News</h1>
                 <ul className="flex flex-wrap justify-center gap-3 sm:gap-5 sm:justify-start">
                     {topics.map((item) => (
