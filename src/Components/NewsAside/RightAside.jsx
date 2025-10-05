@@ -19,8 +19,8 @@ function RightAside({ topic }) {
     if (isLoading) return <Loader />
     if (error) throw error;
     return (
-        <div className="flex flex-col w-full h-full gap-4">
-            <div className="w-full h-[15rem] bg-accent text-secondary flex flex-col justify-center p-6 gap-2  ">
+        <section className="flex flex-col w-full h-full gap-4">
+            <section className="w-full h-[15rem] bg-accent text-secondary flex flex-col justify-center p-6 gap-2  ">
                     <h3 className="text-sm tracking-wide uppercase opacity-80">
                         Number Today
                     </h3>
@@ -31,17 +31,16 @@ function RightAside({ topic }) {
                     <p className="text-base opacity-90">
                         is the price of Bitcoin curently.
                     </p>
-            </div>
+            </section>
             <div className="w-full h-px bg-gray-400" />
-            <div className="w-full overflow-x-hidden no-scrollbar" onClick={()=>handleClick(data.articles[0])}>
+            <section className="w-full overflow-x-hidden no-scrollbar" onClick={()=>handleClick(data.articles[0])}>
                 <img src={data.articles[0].image} alt="" className="object-cover w-full h-[10rem] transition-all ease duration-[0.5s] hover:scale-[1.1]" />
-                <div>
-                    <h1 className="p-2 text-xs text-gray-600">
-                        {data.articles[0].title}
-                    </h1>
-                </div>
-            </div>
-        </div>
+                
+                <h1 className="p-2 text-xs text-gray-600">
+                    {data.articles[0].title}
+                </h1>
+            </section>
+        </section>
     );
 }
 

@@ -23,7 +23,7 @@ function NewsDetails() {
 
         return (
           <main className="flex flex-col mt-[5.5vh] items-center w-full min-h-screen pt-24 pb-16 text-gray-900 ">
-            <div className="flex flex-col w-full max-w-5xl px-4 md:px-6">
+            <section className="flex flex-col w-full max-w-5xl px-4 md:px-6">
 
               <h1 className="mb-4 text-4xl font-extrabold leading-tight sm:text-5xl text-primary">
                 {article.title}
@@ -35,7 +35,7 @@ function NewsDetails() {
                 </p>
               )}
               
-              <div className="pb-4 mb-10 text-sm text-gray-500 border-b">
+              <section className="pb-4 mb-10 text-sm text-gray-500 border-b">
                   {article.source && (
                       <span className="mr-4 font-semibold">
                           Source: {article.source.name}
@@ -44,7 +44,7 @@ function NewsDetails() {
                   {article.publishedAt && (
                       <span>Published: {new Date(article.publishedAt).toLocaleDateString()}</span>
                   )}
-              </div>
+              </section>
 
               {article.image && (
                 <img
@@ -54,11 +54,11 @@ function NewsDetails() {
                 />
               )}
               
-              <div className="text-base leading-relaxed text-gray-900">
+              <section className="text-base leading-relaxed text-gray-900">
                 {article.content 
                   ? formatContent(article.content)
                   : <p className="italic text-gray-500">Full article content not available at the moment.</p>}
-              </div>
+              </section>
 
               {article.url && (
                 <a
@@ -70,7 +70,7 @@ function NewsDetails() {
                   Read the original source article →
                 </a>
               )}
-            </div>
+            </section>
         </main>
     );
 }

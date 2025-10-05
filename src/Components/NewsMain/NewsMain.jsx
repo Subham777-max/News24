@@ -22,7 +22,7 @@ function NewsMain({ topic }){
         <>
             {data.articles.map((article)=>{
                 return(
-                    <div
+                    <article
                         key={article.id}
                         className="w-full mb-6 overflow-x-hidden"
                         onClick={()=>handleClick(article)}
@@ -33,24 +33,24 @@ function NewsMain({ topic }){
                             className="object-cover w-full h-64 transition-all ease duration-[0.5s] hover:scale-[1.1]"
                             loading='lazy'
                         />
-                        <div className="p-4">
+                        <section className="p-4">
                             <h2 className="mb-2 text-xl font-semibold md:text-2xl text-primary">
                                 {article.title}
                             </h2>
                             <p className="text-sm text-gray-700 md:text-base">{article.description}</p>
-                        </div>
-                    </div>
+                        </section>
+                    </article>
 
                 )
             })}
-            <div className="flex justify-center gap-6 mt-6 mb-3">
+            <nav aria-label="News Pagination" className="flex justify-center gap-6 mt-6 mb-3">
                 <button onClick={()=>setPage(page-1)} disabled={page===1} className={`py-2 transition border px-7 text-accent border-accent  ${page===1?"opacity-50":"hover:bg-accent hover:text-white"}`}>
                     Prev
                 </button>
                 <button onClick={()=>setPage(page+1)} className="py-2 text-white transition px-7 bg-accent hover:bg-accent/80">
                     Next
                 </button>
-            </div>
+            </nav>
         </>
     )
 }

@@ -18,23 +18,22 @@ function LeftAside({ topic }) {
     if (isLoading) return <Loader />
     if (error) throw error;
     return (
-        <div className="flex flex-col w-full h-full gap-4">
-            <div className="w-full h-[15rem] overflow-y-auto no-scrollbar  " onClick={()=>handleClick(data.articles[2])}>
+        <section className="flex flex-col w-full h-full gap-4">
+            <section className="w-full h-[15rem] overflow-y-auto no-scrollbar  " onClick={()=>handleClick(data.articles[2])}>
                     <img src={data.articles[2].image} alt="" className="object-cover w-full h-[10rem] transition-all ease duration-[0.5s] hover:scale-[1.1]" />
                     <h1 className="p-2 text-primary">
                         {data.articles[2].title}
                     </h1>
-            </div>
+            </section>
             <div className="w-full h-px my-2 bg-gray-400" />
-            <div className="w-full overflow-x-hidden no-scrollbar" onClick={()=>handleClick(data.articles[1])}>
+            <section className="w-full overflow-x-hidden no-scrollbar" onClick={()=>handleClick(data.articles[1])}>
                 <img src={data.articles[1].image} alt="" className="object-cover w-full h-[10rem] transition-all ease duration-[0.5s] hover:scale-[1.1]" />
-                <div>
-                    <h1 className="p-2 text-xs text-gray-600">
-                        {data.articles[1].title}
-                    </h1>
-                </div>
-            </div>
-        </div>
+                
+                <h1 className="p-2 text-xs text-gray-600">
+                    {data.articles[1].title}
+                </h1>
+            </section>
+        </section>
     );
 }
 

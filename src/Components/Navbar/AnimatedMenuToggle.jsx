@@ -4,8 +4,7 @@ function AnimatedMenuToggle({ isOpen, setIsOpen }) {
     setIsOpen(!isOpen);
   }
 
-  const commonLineClasses =
-    'block h-1 w-8 bg-gray-800 transition-all duration-300 ease-in-out origin-center';
+  const commonLineClasses =  'block h-1 w-8 bg-gray-800 transition-all duration-300 ease-in-out origin-center';
 
   return (
     <button

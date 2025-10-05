@@ -11,19 +11,22 @@ function NewsBody(){
         <>
            <section className="px-6 sm:px-[5.9rem] tracking-wider flex flex-col justify-evenly gap-5 mt-[16.5vh]">
                 <h1 className="text-2xl sm:text-4xl text-primary">Latest News</h1>
-                <ul className="flex flex-wrap justify-center gap-3 sm:gap-5 sm:justify-start">
-                    {topics.map((item) => (
-                        <li
-                        key={item}
-                        className={
-                            `px-3 py-1 text-sm border cursor-pointer ${topic===item?"border-accent text-accent":"border-primary text-primary"} hover:border-accent hover:text-accent rounded-2xl sm:text-base`
-                        }
-                        onClick={()=>setTopic(item)}
-                        >
-                            {item}
-                        </li>
-                    ))}
-                </ul>
+                <nav aria-label="Filter News by Topic">
+                        <ul role="tablist" className="flex flex-wrap justify-center gap-3 sm:gap-5 sm:justify-start">
+                        {topics.map((item) => (
+                            <li
+                            role="presentation"
+                            key={item}
+                            className={
+                                `px-3 py-1 text-sm border cursor-pointer ${topic===item?"border-accent text-accent":"border-primary text-primary"} hover:border-accent hover:text-accent rounded-2xl sm:text-base`
+                            }
+                            onClick={()=>setTopic(item)}
+                            >
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
                 <section className="flex mt-5 h-[64vh] gap-4">
                     
                     <aside className="hidden lg:block lg:w-1/4">
