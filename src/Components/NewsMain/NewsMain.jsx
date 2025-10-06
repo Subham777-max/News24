@@ -24,7 +24,7 @@ function NewsMain({ topic }){
                 return(
                     <article
                         key={article.id}
-                        className="w-full mb-6 overflow-x-hidden"
+                        className="w-full mb-6 overflow-x-hidden cursor-pointer"
                         onClick={()=>handleClick(article)}
                         >
                         <img

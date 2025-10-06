@@ -6,7 +6,7 @@ function NavMenue({ isOpen, setIsOpen }){
     return(
         <>
             <section
-                className={`bg-accent absolute inset-0 z-40 origin-right transform transition-transform duration-500 ease-in-out overflow-hidden ${
+                className={`bg-accent fixed w-full h-full inset-0 z-40 origin-right transform transition-transform duration-500 ease-in-out overflow-hidden ${
                     isOpen ? "scale-x-[1]" : "scale-x-[0]"
                 }`}
             >
@@ -24,7 +24,7 @@ function NavMenue({ isOpen, setIsOpen }){
                         setIsOpen(false);
                     }}>About</li>
                     <li>
-                        <Search />
+                        <Search setIsOpen={setIsOpen} />
                     </li>
                 </ul>
             </section>

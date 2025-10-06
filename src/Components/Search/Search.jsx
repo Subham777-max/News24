@@ -1,6 +1,14 @@
-function Search(){
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function Search({ setIsOpen }){
+    const [value,setValue]=useState('');
+    const navigate=useNavigate();
     function handleSubmit(e){
         e.preventDefault();
+        navigate(`/Topics/${value.toLowerCase()}`);
+        setIsOpen(false);
+        setValue('');
     }
     return(
         <>
@@ -9,6 +17,8 @@ function Search(){
                                 type="text"
                                 placeholder="Search news by topic..."
                                 className="w-full px-2 py-2 bg-transparent border-none outline-none text-secondary placeholder-secondary focus:outline-none"
+                                value={value}
+                                onChange={(e)=>setValue(e.target.value)}
                             />
                             <button type="submit">
                                     <svg
