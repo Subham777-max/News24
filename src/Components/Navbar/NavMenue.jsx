@@ -14,7 +14,7 @@ function NavMenue({ isOpen, setIsOpen }){
                     <h1 className="text-4xl font-bold text-secondary sm:text-6xl">Menue</h1>
                 </section>
                 <div className="w-full h-px my-2 mt-[14vh] bg-gray-400" />
-                <ul className="flex flex-col justify-evenly gap-5 p-6 sm:p-8 text-secondary h-[60vh] ">
+                <ul className="flex flex-col justify-evenly gap-5 p-6 sm:p-8 text-secondary h-[70vh] ">
                     <li className="text-4xl font-bold transition-all ease-in-out cursor-pointer text-secondary sm:text-6xl hover:text-gray-400" onClick={()=>{
                         navigate("/");
                         setIsOpen(false);
@@ -23,6 +23,10 @@ function NavMenue({ isOpen, setIsOpen }){
                         navigate("/About");
                         setIsOpen(false);
                     }}>About</li>
+                    <li className="text-4xl font-bold transition-all ease-in-out cursor-pointer text-secondary sm:text-6xl hover:text-gray-400" onClick={()=>{
+                        navigate("/About");
+                        setIsOpen(false);
+                    }}>Your Favourits</li>
                     <li>
                         <Search setIsOpen={setIsOpen} />
                     </li>
