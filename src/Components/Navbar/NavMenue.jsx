@@ -24,7 +24,7 @@ function NavMenue({ isOpen, setIsOpen }){
                         setIsOpen(false);
                     }}>About</li>
                     <li className="text-4xl font-bold transition-all ease-in-out cursor-pointer text-secondary sm:text-6xl hover:text-gray-400" onClick={()=>{
-                        navigate("/About");
+                        navigate("/Favourits");
                         setIsOpen(false);
                     }}>Your Favourits</li>
                     <li>

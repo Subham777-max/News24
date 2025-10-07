@@ -4,7 +4,7 @@ function About() {
             id="about-us" 
             className="flex flex-col items-center w-full min-h-screen pt-24 pb-20 bg-[#F7E0DA]/40"
         >
-            <div className="flex flex-col w-full max-w-5xl px-4 md:px-6">
+            <div className="flex flex-col w-full mt-[5.5vh] max-w-5xl px-4 md:px-6">
 
                 <header className="mb-16 text-center">
                     <h1 

@@ -5,6 +5,7 @@ const HomePage = lazy(() => import("../Pages/HomePage"));
 const NewsDetailsPage = lazy(() => import("../Pages/NewsDetailsPage"));
 const AboutPage= lazy(()=> import("../Pages/AboutPage"));
 const SearchedTopicPage= lazy(()=> import("../Pages/SearchedTopicPage"));
+const FavouritArticlesPage= lazy(()=>import("../Pages/FavouritArticlesPage"))
 
 function Router(){
     return(
@@ -15,6 +16,7 @@ function Router(){
                     <Route path="/About" element={<AboutPage />} />
                     <Route path="/News-Details/:id" element={<NewsDetailsPage />} />
                     <Route path="/Topics/:topic" element={<SearchedTopicPage />} />
+                    <Route path="/Favourits" element={<FavouritArticlesPage />} />
                 </Routes>
             </Suspense>
         </>

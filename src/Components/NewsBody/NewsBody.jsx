@@ -34,7 +34,7 @@ function NewsBody(){
                     </aside>
 
                     
-                    <main className="flex-1 overflow-y-auto sm:w-2/3 lg:w-2/4 no-scrollbar">
+                    <main className="flex-1 mb-5 overflow-y-auto sm:w-2/3 lg:w-2/4 no-scrollbar">
                         <NewsMain topic={topic} />
                     </main>
 
