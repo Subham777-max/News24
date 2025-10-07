@@ -49,6 +49,7 @@ function FavouritArticles() {
                                 src={article.image}
                                 alt={article.title}
                                 className="object-cover w-full h-48"
+                                loading="lazy"
                             />
                         )}
                         <section className="p-4">
