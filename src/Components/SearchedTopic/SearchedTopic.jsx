@@ -1,14 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import fetchTopNews from "../../Service/fetchTopNews";
 import Loader from "../Loader/Loader";
+import { AppContext } from "../../Context/CreateContext";
+import { FaHeart } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
 
 function SearchedTopic({ topic }){
+    const { objArr, setObjArr } = useContext(AppContext);
     const [page,setPage]=useState(1)
     const navigate=useNavigate();
     function handleClick(article){
         navigate(`/News-Details/${article.id}`, { state: { article } });
+    }
+    function handleFavouritClick(e,article){
+        e.stopPropagation();
+        setObjArr([...objArr,article]);
     }
     const { data, isLoading, error } = useQuery({
         queryKey: ["topNews", topic,page], 
@@ -45,12 +53,15 @@ function SearchedTopic({ topic }){
                                     className="w-full mb-6 overflow-x-hidden cursor-pointer"
                                     onClick={()=>handleClick(article)}
                                     >
-                                    <img
-                                        src={article.image}
-                                        alt={article.title}
-                                        className="object-cover w-full h-64 transition-all ease duration-[0.5s] hover:scale-[1.1]"
-                                        loading='lazy'
-                                    />
+                                    <section className='relative w-full h-64 overflow-hidden group'>
+                                            <img
+                                            src={article.image}
+                                            alt={article.title}
+                                            className="object-cover w-full h-full transition-all ease duration-[0.5s] hover:scale-[1.1]"
+                                            loading='lazy'
+                                            />
+                                        <section style={{ background: "linear-gradient(transparent, black)" }} className='w-full absolute transition-all ease duration-[0.5s] bottom-[-40%] group-hover:bottom-0 h-[40%] flex justify-between items-center px-6 text-white text-4xl'><h1>Click to See</h1><span onClick={(e)=>handleFavouritClick(e,article)}>{objArr.some(a => a.id === article.id) ? <FaHeart color='red' /> : <CiHeart />}</span></section>
+                                    </section>
                                     <section className="p-4">
                                         <h2 className="mb-2 text-xl font-semibold md:text-2xl text-primary">
                                             {article.title}

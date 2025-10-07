@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import { AppContext } from "./CreateContext";
-
+const arrKey='article';
 function AppProvider({ children }) {
-  const [idArr, setIdArr] = useState(() => {
-    const stored = localStorage.getItem("idArr");
-    return stored ? JSON.parse(stored) : [];  
-  });
+  const [objArr, setObjArr] = useState(()=>{
+    try {
+            const rawData = localStorage.getItem(arrKey);
+            if (!rawData) return [];
+            return JSON.parse(rawData);
+        } catch (error) {
+            console.error("Error parsing todos from localStorage:", error);
+            return [];
+        }
+    }
+  );
 
   useEffect(() => {
-    localStorage.setItem("idArr", JSON.stringify(idArr));
-  }, [idArr]);
+    localStorage.setItem(arrKey, JSON.stringify(objArr));
+  }, [objArr]);
 
   return (
-    <AppContext.Provider value={{ idArr, setIdArr }}>
+    <AppContext.Provider value={{ objArr, setObjArr }}>
       {children}
     </AppContext.Provider>
   );
