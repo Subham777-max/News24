@@ -25,3 +25,5 @@ dist-ssr
 
 # Ignore custom folders inside src
 src/Constants/
+
+.env
