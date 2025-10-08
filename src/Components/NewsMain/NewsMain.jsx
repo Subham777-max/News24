@@ -6,16 +6,21 @@ import { useNavigate } from 'react-router-dom';
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { AppContext } from '../../Context/CreateContext.jsx';
+import Toast from '../Toast/Toast.jsx';
 function NewsMain({ topic }){
     const { objArr, setObjArr } = useContext(AppContext);
     const [page,setPage]=useState(1);
+    const [isTrue,setIstrue]=useState(false);
     const navigate=useNavigate();
     function handleClick(article){
         navigate(`/News-Details/${article.id}`, { state: { article } });
     }
     function handleFavouritClick(e,article){
         e.stopPropagation();
-        setObjArr([...objArr,article]);
+        if(!objArr.includes(article)) setObjArr([...objArr,article]);
+        else return;
+        setIstrue(true)
+        setTimeout(()=>setIstrue(false),2000)
     }
     const { data, isLoading, error } = useQuery({
         queryKey: ["topNews", topic,page], 
@@ -63,6 +68,7 @@ function NewsMain({ topic }){
                     Next
                 </button>
             </nav>
+            <Toast isTrue={isTrue} />
         </>
     )
 }

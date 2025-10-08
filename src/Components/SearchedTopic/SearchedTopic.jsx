@@ -6,10 +6,12 @@ import Loader from "../Loader/Loader";
 import { AppContext } from "../../Context/CreateContext";
 import { FaHeart } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
+import Toast from "../Toast/Toast";
 
 function SearchedTopic({ topic }){
     const { objArr, setObjArr } = useContext(AppContext);
-    const [page,setPage]=useState(1)
+    const [page,setPage]=useState(1);
+    const [isTrue,setIstrue]=useState(false);
     const navigate=useNavigate();
     function handleClick(article){
         navigate(`/News-Details/${article.id}`, { state: { article } });
@@ -17,6 +19,10 @@ function SearchedTopic({ topic }){
     function handleFavouritClick(e,article){
         e.stopPropagation();
         setObjArr([...objArr,article]);
+        if(!objArr.includes(article)) setObjArr([...objArr,article]);
+        else return;
+        setIstrue(true)
+        setTimeout(()=>setIstrue(false),2000)
     }
     const { data, isLoading, error } = useQuery({
         queryKey: ["topNews", topic,page], 
@@ -82,6 +88,7 @@ function SearchedTopic({ topic }){
                     </button>
                 </nav>
             </main>
+             <Toast isTrue={isTrue} />
         </>
     )
 }
