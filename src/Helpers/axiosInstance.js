@@ -1,7 +1,5 @@
 import axios from "axios";
-
-const PROXY = "https://api.allorigins.win/raw?url=";
-
-export const axiosInstance = axios.create({
-  baseURL: PROXY + encodeURIComponent("https://gnews.io/api/v4"),
-});
+const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+export const axiosInstance=axios.create({
+    baseURL:`${CORS_PROXY}https://gnews.io/api/v4`
+})
