@@ -1,6 +1,6 @@
 import { axiosInstance } from "../Helpers/axiosInstance.js";
 const API_KEY=import.meta.env.VITE_API_KEY;
-console.log(API_KEY)
+
 async function fetchTopNews(topic="technology",max=10,page=1){
 
   try {
